@@ -54,21 +54,21 @@ def Line_detect(list_of_paragraphs):
         sorted_contours = sorted(filtered_contours, key=lambda contour: cv2.boundingRect(contour)[1])
 
         text_images = {}
-        counter = 0
+        text_number = 0
         
         for contour in sorted_contours:
             x, y, w, h = cv2.boundingRect(contour)
             
             #Recognize each line coordinate and crop the image
             line_image = image[y:y + h, x:x+w]
-            counter+=1
-            keys=counter
+            text_number+=1
+            keys=text_number
             value=line_image
             text_images[keys]=text_images.setdefault(keys, value)
             
 
         parag+=1
-        key=parag
+        key='paragraf_num_{}'.format(parag)
         values= text_images
         paragraphs[key]=paragraphs.setdefault(key, values)
 
