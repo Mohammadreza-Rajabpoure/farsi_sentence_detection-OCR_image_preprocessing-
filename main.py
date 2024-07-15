@@ -9,15 +9,16 @@ from text_detect.src.save_images import save_images
 folder = f"{pathlib.Path(__file__).resolve().parent}/pics"
 def main():
    
+   dict1 = {}
    for filename in os.listdir(folder):
-      dict1 = {}
+      
       
       img = cv2.imread(os.path.join(folder, filename))
    
       list_parag = Paragraph_detect(img)
       dict1["{}".format(filename)] = Line_detect(list_parag)
       
-      save_images(dict1)
+   save_images(dict1)
       
    
 
